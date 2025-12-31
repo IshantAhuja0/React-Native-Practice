@@ -5,6 +5,8 @@ import { ScrollView } from 'react-native';
 import FlatCard from './components/FlatCard';
 import ElevatedCard from './components/ElevatedCard';
 import SpecialCard from './components/SpecialCard';
+import ActionCard from './components/ActionCard';
+import ContactList from './components/ContactList';
 
 const App = () => {
   return (
@@ -13,6 +15,8 @@ const App = () => {
         <FlatCard />
         <ElevatedCard />
         <SpecialCard />
+        <ActionCard/>
+        <ContactList/>
       </ScrollView>
     </SafeAreaView>
   );

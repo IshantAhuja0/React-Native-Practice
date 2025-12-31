@@ -1,24 +1,33 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import {
+  View,
+  Text,
+  Linking,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
 
-function SpecialCard() {
+export default function ActionCard() {
+  const openWebsite = (webLink: string) => {
+    Linking.openURL(webLink);
+  };
   return (
     <View>
       <Text style={styles.headingText}>Special Card</Text>
       <View style={[styles.card, styles.cardElevated]}>
         <Image
           source={{
-            uri: 'https://images.pexels.com/photos/34636073/pexels-photo-34636073.jpeg',
+            uri: 'https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg',
           }}
           style={styles.cardImage}
         />
         <View style={styles.cardBody}>
           <View style={styles.cardHeading}>
-          <Text style={styles.cardTitle}>Lake</Text>
-          <Text style={styles.cardLabel}>Special</Text>
-
+            <Text style={styles.cardTitle}>Lake Hotel</Text>
+            <Text style={styles.cardLabel}>Premium</Text>
           </View>
-          <Text style={styles.cardDescription}>
+          <Text style={styles.cardDescription} numberOfLines={4}>
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text
             ever since the 1500s, when an unknown printer took a galley of type
@@ -27,10 +36,21 @@ function SpecialCard() {
             remaining essentially unchanged.
           </Text>
         </View>
+          <TouchableOpacity
+          style={styles.cardButton}
+            onPress={() =>
+              openWebsite(
+                'https://www.tajhotels.com/en-in/offers/suite-surprises-member-only?gad_source=1&gad_campaignid=23166848553&gbraid=0AAAAADhl-_9nLWdmHPMnvii1k9NVqWmFD&gclid=CjwKCAiAjc7KBhBvEiwAE2BDOc3e473GtECKxfUHrkH2hmcHL5zFLy_QlQaHY1jAmb9tviIL6cb79xoCE1oQAvD_BwE',
+              )
+            }
+          >
+            <Text>Book Now</Text>
+          </TouchableOpacity>
       </View>
     </View>
   );
 }
+
 const styles = StyleSheet.create({
   headingText: {
     fontSize: 24,
@@ -39,28 +59,30 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
   },
   card: {
-    elevation:5,
-    // height:"50%",
-    width: '75%',
+    elevation: 4,
+    height: 380,
+    width: "90%",
     padding: 0,
     borderWidth: 0,
     borderRadius: 8,
     borderBlockColor: 'black',
-    margin: 8,
+    margin: 20,
     backgroundColor: '#abb0afff',
-    alignSelf:"center"
+    alignSelf:"center",
+    // paddingBottom:4,
   },
   cardBody: {
+    // height:100,
     padding: 5,
   },
   cardLabel: {
     padding: 4,
-    backgroundColor:"#f66666ff",
-    borderWidth:0,
-    borderRadius:14,
-    elevation:2,
-    fontSize:10,
-    fontWeight:"bold"
+    backgroundColor: '#f66666ff',
+    borderWidth: 0,
+    borderRadius: 14,
+    elevation: 2,
+    fontSize: 10,
+    fontWeight: 'bold',
   },
   cardTitle: {
     fontSize: 18,
@@ -68,25 +90,36 @@ const styles = StyleSheet.create({
     // paddingHorizontal: 8,
     // paddingVertical: 5,
   },
-  cardHeading:{
-    flex:1,
-    flexDirection:"row",
-    justifyContent:"space-between"
+  cardHeading: {
+    // flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems:"center",
   },
   cardDescription: {
     fontSize: 10,
-    fontWeight: 'semibold',
+    fontWeight: '600',
     // paddingHorizontal: 8,
     // paddingVertical: 2,
   },
   cardElevated: {},
   cardImage: {
-    height: 140,
+    height: 220,
     borderWidth: 0,
     borderTopLeftRadius: 6,
     borderTopRightRadius: 6,
     borderBottomLeftRadius: 0,
     borderBottomRightRadius: 0,
   },
+  cardButton: {
+    alignItems: 'center',
+    fontWeight:"bold",
+    padding: 10,
+    backgroundColor: '#265aebff',
+    borderWidth: 0,
+    borderRadius: 6,
+    paddingVertical:12,
+    margin:4,
+    marginTop:12,
+  },
 });
-export default SpecialCard;
